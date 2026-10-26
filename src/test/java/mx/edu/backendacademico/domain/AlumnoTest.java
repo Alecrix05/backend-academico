@@ -26,4 +26,22 @@ class AlumnoTest {
     void materiaRechazaCreditosNoPositivos() {
         assertThrows(IllegalArgumentException.class, () -> new Materia(null, "M1", "Análisis", 0));
     }
+
+    @Test
+    void reactivarRegresaAActivoSinModificarElOriginal() {
+        var baja = new Alumno(1L, "a001", "Ada", "ada@u.mx", EstatusAlumno.BAJA);
+        var activo = baja.reactivar();
+        assertEquals(EstatusAlumno.ACTIVO, activo.estatus());
+        assertEquals(baja.id(), activo.id());
+        assertEquals(EstatusAlumno.BAJA, baja.estatus());
+    }
+
+    @Test
+    void mismoIdYDistintoCorreoNoSonIguales() {
+        var a = new Alumno(1L, "A001", "Ada", "ada@u.mx", EstatusAlumno.ACTIVO);
+        var b = new Alumno(1L, "A001", "Ada", "otra@u.mx", EstatusAlumno.ACTIVO);
+        // equals del record compara todos los componentes, no solo el id.
+        assertNotEquals(a, b);
+        assertEquals(a.id(), b.id());
+    }
 }

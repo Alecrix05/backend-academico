@@ -27,4 +27,9 @@ public record Alumno(Long id, String matricula, String nombre, String correo,
         // 3. Se obtiene otro valor; las referencias al valor anterior no cambian.
         return new Alumno(id, matricula, nombre, correo, EstatusAlumno.BAJA);
     }
+
+    public Alumno reactivar() {
+        // Se obtiene otro valor; el alumno dado de baja conserva su estatus.
+        return new Alumno(id, matricula, nombre, correo, EstatusAlumno.ACTIVO);
+    }
 }
