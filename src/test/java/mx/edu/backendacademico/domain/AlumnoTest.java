@@ -4,9 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 class AlumnoTest {
-
-    @Test
-    void bajaConservaIdentidadSinModificarElOriginal() {
+    @Test void bajaConservaIdentidadSinModificarElOriginal() {
         var alumno = new Alumno(1L, " a001 ", "Ada", "ada@u.mx", EstatusAlumno.ACTIVO);
         var baja = alumno.darDeBaja();
         // Comprueba tanto el resultado como la ausencia de efectos laterales.
@@ -16,14 +14,12 @@ class AlumnoTest {
         assertEquals(EstatusAlumno.ACTIVO, alumno.estatus());
     }
 
-    @Test
-    void rechazaMatriculaVacia() {
+    @Test void rechazaMatriculaVacia() {
         assertThrows(IllegalArgumentException.class, () ->
-                new Alumno(null, " ", "Ada", "ada@u.mx", EstatusAlumno.ACTIVO));
+            new Alumno(null, " ", "Ada", "ada@u.mx", EstatusAlumno.ACTIVO));
     }
 
-    @Test
-    void materiaRechazaCreditosNoPositivos() {
+    @Test void materiaRechazaCreditosNoPositivos() {
         assertThrows(IllegalArgumentException.class, () -> new Materia(null, "M1", "Análisis", 0));
     }
 }

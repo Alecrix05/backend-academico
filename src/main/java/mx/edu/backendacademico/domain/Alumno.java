@@ -5,7 +5,6 @@ import java.util.Objects;
 
 public record Alumno(Long id, String matricula, String nombre, String correo,
                      EstatusAlumno estatus) {
-
     public Alumno {
         // 1. La identidad todavía puede ser null antes de persistir.
         if (id != null && id <= 0) throw new IllegalArgumentException("Id inválido");

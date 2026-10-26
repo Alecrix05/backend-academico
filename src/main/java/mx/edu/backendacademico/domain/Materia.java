@@ -1,7 +1,6 @@
 package mx.edu.backendacademico.domain;
 
 public record Materia(Long id, String clave, String nombre, int creditos) {
-
     public Materia {
         // Conserva las precondiciones incluso al construir desde una prueba.
         if (clave == null || clave.isBlank() || nombre == null || nombre.isBlank()) {
