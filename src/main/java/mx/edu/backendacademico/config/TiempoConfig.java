@@ -6,7 +6,6 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration(proxyBeanMethods = false)
 public class TiempoConfig {
-
     @Bean
     public Clock reloj() {
         // El tiempo es una dependencia sustituible por Clock.fixed en pruebas.

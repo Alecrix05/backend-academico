@@ -29,7 +29,7 @@ public class AlumnoService {
     }
 
     public Alumno crear(String matricula, String nombre, String correo) {
-        // La comprobación mejora el mensaje; el almacén vuelve a proteger unicidad.
+        // Esta comprobación mejora el mensaje; el almacén vuelve a proteger unicidad.
         if (repository.existePorMatricula(matricula)) {
             throw new MatriculaDuplicadaException(matricula);
         }
