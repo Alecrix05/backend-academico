@@ -32,3 +32,15 @@ POST {{baseUrl}}/alumnos
 Content-Type: application/json
 
 {"matricula":"A001","nombre":"Otra persona","correo":"otra@universidad.mx"}
+
+### Reto: matrícula con espacio interno, 400
+POST {{baseUrl}}/alumnos
+Content-Type: application/json
+
+{"matricula":"A 001","nombre":"Ada Lovelace","correo":"ada@universidad.mx"}
+
+### Reto: espacios solo en los extremos, 201 y se guarda como A001
+POST {{baseUrl}}/alumnos
+Content-Type: application/json
+
+{"matricula":"  a001  ","nombre":"Ada Lovelace","correo":"ada@universidad.mx"}
