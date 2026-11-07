@@ -32,7 +32,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         var detalle = problema(HttpStatus.BAD_REQUEST, "DATOS_INVALIDOS", "Revisa los campos indicados");
         // Conserva varios errores de un campo sin publicar el valor rechazado.
         List<CampoInvalido> campos = ex.getBindingResult().getFieldErrors().stream()
-                .map(e -> new CampoInvalido(e.getField(), e.getDefaultMessage())).toList();
+            .map(e -> new CampoInvalido(e.getField(), e.getDefaultMessage())).toList();
         detalle.setProperty("campos", campos);
         return handleExceptionInternal(ex, detalle, headers, status, request);
     }

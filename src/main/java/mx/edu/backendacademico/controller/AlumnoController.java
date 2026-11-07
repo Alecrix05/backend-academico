@@ -24,27 +24,21 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/alumnos")
 public class AlumnoController {
     private final AlumnoService service;
-
     public AlumnoController(AlumnoService service) { this.service = service; }
 
     // GET consulta sin solicitar cambios de estado de negocio.
     @GetMapping
-    public List<AlumnoResponse> listar() {
-        return service.listar().stream().map(AlumnoMapper::toResponse).toList();
-    }
+    public List<AlumnoResponse> listar() { return service.listar().stream().map(AlumnoMapper::toResponse).toList(); }
 
     // GET consulta sin solicitar cambios de estado de negocio.
     @GetMapping("/{id}")
-    public AlumnoResponse buscar(@PathVariable Long id) {
-        return AlumnoMapper.toResponse(service.buscar(id));
-    }
+    public AlumnoResponse buscar(@PathVariable Long id) { return AlumnoMapper.toResponse(service.buscar(id)); }
 
     // El servicio asigna identidad; ResponseEntity publica 201 y Location.
     @PostMapping
     public ResponseEntity<AlumnoResponse> crear(@RequestBody @Valid CrearAlumnoRequest request) {
         var creado = service.crear(request.matricula(), request.nombre(), request.correo());
-        return ResponseEntity.created(URI.create("/api/v1/alumnos/" + creado.id()))
-                .body(AlumnoMapper.toResponse(creado));
+        return ResponseEntity.created(URI.create("/api/v1/alumnos/" + creado.id())).body(AlumnoMapper.toResponse(creado));
     }
 
     // PUT sustituye todos los campos de la representación editable.
