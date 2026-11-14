@@ -32,7 +32,7 @@ public class AlumnoJpaAdapter implements AlumnoRepository {
             Throwable causa = ex;
             while (causa != null) {
                 if (causa instanceof ConstraintViolationException restriccion &&
-                        "uk_alumnos_matricula".equalsIgnoreCase(restriccion.getConstraintName())) {
+                    "uk_alumnos_matricula".equalsIgnoreCase(restriccion.getConstraintName())) {
                     throw new MatriculaDuplicadaException(alumno.matricula());
                 }
                 causa = causa.getCause();
