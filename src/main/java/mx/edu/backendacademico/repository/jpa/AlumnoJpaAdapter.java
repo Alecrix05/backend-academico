@@ -62,4 +62,9 @@ public class AlumnoJpaAdapter implements AlumnoRepository {
     public void eliminarPorId(Long id) {
         repository.deleteById(id);
     }
+
+    @Override
+    public java.util.Optional<Alumno> buscarPorMatricula(String matricula) {
+        return repository.findByMatricula(matricula).map(AlumnoEntity::toDomain);
+    }
 }

@@ -52,4 +52,8 @@ public class AlumnoService {
         buscar(id);
         repository.eliminarPorId(id);
     }
+
+    public java.util.Optional<Alumno> buscarPorMatricula(String matricula) {
+        return repository.buscarPorMatricula(matricula);
+    }
 }
