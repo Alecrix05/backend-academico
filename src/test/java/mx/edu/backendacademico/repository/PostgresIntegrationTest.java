@@ -34,17 +34,13 @@ class PostgresIntegrationTest {
     @Autowired InscripcionService servicio;
 
     @Test void noSobrepasaElCupoNiRepiteUnaInscripcion() {
-        var a = alumnos.saveAndFlush(new AlumnoEntity(new Alumno(null, "P1", "Ada", "ada@u.mx",
-                EstatusAlumno.ACTIVO)));
-        var b = alumnos.saveAndFlush(new AlumnoEntity(new Alumno(null, "P2", "Emmy", "emmy@u.mx",
-                EstatusAlumno.ACTIVO)));
+        var a = alumnos.saveAndFlush(new AlumnoEntity(new Alumno(null, "P1", "Ada", "ada@u.mx", EstatusAlumno.ACTIVO)));
+        var b = alumnos.saveAndFlush(new AlumnoEntity(new Alumno(null, "P2", "Emmy", "emmy@u.mx", EstatusAlumno.ACTIVO)));
         var materia = materias.saveAndFlush(new MateriaEntity("P101", "Pruebas", 4, 1));
         servicio.inscribir(a.getId(), materia.getId());
-        var repetida = assertThrows(OperacionAcademicaException.class, () -> servicio.inscribir(a.getId(),
-                materia.getId()));
+        var repetida = assertThrows(OperacionAcademicaException.class, () -> servicio.inscribir(a.getId(), materia.getId()));
         assertEquals("INSCRIPCION_DUPLICADA", repetida.getCodigo());
-        var llena = assertThrows(OperacionAcademicaException.class, () -> servicio.inscribir(b.getId(),
-                materia.getId()));
+        var llena = assertThrows(OperacionAcademicaException.class, () -> servicio.inscribir(b.getId(), materia.getId()));
         assertEquals("SIN_CUPO", llena.getCodigo());
         // Las llamadas anteriores pasaron por el proxy real y terminaron su transacción.
         assertEquals(1, inscripciones.countByMateriaId(materia.getId()));

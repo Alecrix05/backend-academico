@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -10,9 +9,9 @@
     </parent>
     <groupId>mx.edu</groupId>
     <artifactId>backend-academico</artifactId>
-    <version>0.0.9-SNAPSHOT</version>
-    <name>backend-academico-u09</name>
-    <description>Proyecto acumulativo de Desarrollo Web - Unidad 09</description>
+    <version>0.0.10-SNAPSHOT</version>
+    <name>backend-academico-u10</name>
+    <description>Proyecto acumulativo de Desarrollo Web - Unidad 10</description>
     <properties>
         <java.version>21</java.version>
         <!-- JDK 25 compila bytecode y API de Java 21, sin funciones preview. -->
@@ -70,6 +69,15 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-flyway</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security-test</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
     <build>
